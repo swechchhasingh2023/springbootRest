@@ -2,7 +2,7 @@ package com.swechchha.SpringRestProject.entities;
 
 public class Course {
 	private long id;
-	private String titie;
+	private String title;
 	private String description;
 	
 	public Course() {
@@ -10,12 +10,13 @@ public class Course {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Course(long id, String titie, String description) {
-		super();
-		this.id = id;
-		this.titie = titie;
-		this.description = description;
+	public Course(long id, String title, String description) {
+	    super();
+	    this.id = id;
+	    this.title = title;
+	    this.description = description;
 	}
+
 
 	public long getId() {
 		return id;
@@ -25,12 +26,12 @@ public class Course {
 		this.id = id;
 	}
 
-	public String getTitie() {
-		return titie;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitie(String titie) {
-		this.titie = titie;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
@@ -43,7 +44,7 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", titie=" + titie + ", description=" + description + "]";
+		return "Course [id=" + id + ", title=" + title + ", description=" + description + "]";
 	}
 	
 	

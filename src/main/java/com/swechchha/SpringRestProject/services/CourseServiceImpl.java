@@ -2,6 +2,7 @@ package com.swechchha.SpringRestProject.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -41,23 +42,42 @@ public class CourseServiceImpl implements CourseService {
 		return course;
 	}
 
-	 @Override
-	    public Course updateCourse(Long courseId, Course course) {
-	        for (int i = 0; i < list.size(); i++) {
-	            Course c = list.get(i);
-	            if (c.getId() == courseId) {
-	                course.setId(courseId); // ensure id consistency
-	                list.set(i, course);
-	                return course;
-	            }
+	@Override
+	public Course updateCourse(Course course) {
+	    for (Course e : list) {
+	        if (e.getId() == course.getId()) {
+	            e.setTitle(course.getTitle());
+	            e.setDescription(course.getDescription());
+	            return e;   // return updated object from list
 	        }
-	        return null;
 	    }
+	    return null;  // if no course found
+	}
 
-	    @Override
-	    public void deleteCourse(Long courseId) {
-	        list.removeIf(c -> c.getId() == courseId);
-	    }
+
+	@Override
+	public void deleteCourse(long parseLong) {
+		list = this.list.stream().filter(e->e.getId()!=parseLong).collect(Collectors.toList());
+	}
+	
+
+//	 @Override
+//	    public Course updateCourse(Long courseId, Course course) {
+//	        for (int i = 0; i < list.size(); i++) {
+//	            Course c = list.get(i);
+//	            if (c.getId() == courseId) {
+//	                course.setId(courseId); // ensure id consistency
+//	                list.set(i, course);
+//	                return course;
+//	            }
+//	        }
+//	        return null;
+//	    }
+//
+//	    @Override
+//	    public void deleteCourse(Long courseId) {
+//	        list.removeIf(c -> c.getId() == courseId);
+//	    }
 	
 	
 
